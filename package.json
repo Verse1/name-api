@@ -2,10 +2,15 @@
   "name": "name-api",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/Verse1/name-api.git",
-  "author": "Verse <verseow@gmail.com>",
-  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
   "dependencies": {
     "express": "^4.18.1"
-  }
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "license": "MIT"
 }
