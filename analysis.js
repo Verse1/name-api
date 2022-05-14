@@ -5,13 +5,16 @@ export default function meaning(name, age, gender) {
   // make first letter uppercase
   name = name.charAt(0).toUpperCase() + name.slice(1);
 
+  // give gender a number
   gender = gender.toUpperCase() === 'M' ? 2 : 5;
+
+  // calculate algorithm product from all params
   const product =
     nameArray.reduce((acc, curr) => {
       if (consonants.includes(curr)) {
-        return acc * 2;
-      } else if (vowels.includes(curr)) {
         return acc * 3;
+      } else if (vowels.includes(curr)) {
+        return acc * 5;
       } else {
         return acc;
       }
@@ -21,25 +24,24 @@ export default function meaning(name, age, gender) {
     syllable(name) *
     gender;
 
-  console.log(
-    product,
-    consonants.length,
-    vowels.length,
-    adjectives.length,
-    careers.length,
-    product % careers.length
-  );
+  // construct first sentence with adjectives
   const sentence1 = `The name ${name} gives you the ability to be ${
     adjectives[product % adjectives.length]
   } while also being ${
     adjectives[product % consonants.length]
   } at the same time.`;
 
+  // construct second sentence with careers
   const sentence2 = `In life you you may start garnering an interest to be a ${
     careers[product % careers.length]
   } `;
 
-  return [sentence1, sentence2];
+  // construct third sentence with hobbies
+  const sentence3 = `In your free time you sometimes are ${
+    hobbies[product % hobbies.length]
+  }`;
+  // return both sentences
+  return [sentence1, sentence2, sentence3];
 }
 
 const adjectives = [
@@ -100,6 +102,20 @@ const careers = [
   'nurse',
   'firefighter',
   'politician',
+];
+
+const hobbies = [
+  'cooking',
+  'gardening',
+  'painting',
+  'writing',
+  'dancing',
+  'playing music',
+  'coding',
+  'playing video games',
+  'playing sports',
+  'making YouTube videos',
+  'crying in the shower',
 ];
 
 const consonants = [
