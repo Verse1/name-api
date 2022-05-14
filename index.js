@@ -8,11 +8,12 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   const name = req.query.name;
   const age = req.query.age;
+  const gender = req.query.gender;
 
   if (name === undefined || age === undefined) {
     res.status(400).send('Please provide a name and age');
   } else {
-    res.send(meaning(name.toLowerCase(), age));
+    res.send(meaning(name.toLowerCase(), age, gender));
   }
 });
 

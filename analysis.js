@@ -1,7 +1,11 @@
 import { syllable } from 'syllable';
 
-export default function meaning(name, age) {
+export default function meaning(name, age, gender) {
   const nameArray = name.split('');
+  // make first letter uppercase
+  name = name.charAt(0).toUpperCase() + name.slice(1);
+
+  gender = gender.toUpperCase() === 'M' ? 2 : 5;
   const product =
     nameArray.reduce((acc, curr) => {
       if (consonants.includes(curr)) {
@@ -14,15 +18,89 @@ export default function meaning(name, age) {
     }, 1) *
     age *
     name.length *
-    syllable(name);
+    syllable(name) *
+    gender;
 
-  console.log(product, consonants.length, vowels.length, adjectives.length);
+  console.log(
+    product,
+    consonants.length,
+    vowels.length,
+    adjectives.length,
+    careers.length,
+    product % careers.length
+  );
   const sentence1 = `The name ${name} gives you the ability to be ${
+    adjectives[product % adjectives.length]
+  } while also being ${
     adjectives[product % consonants.length]
-  } while also being ${adjectives[product % vowels.length]} at the same time.`;
+  } at the same time.`;
 
-  return sentence1;
+  const sentence2 = `In life you you may start garnering an interest to be a ${
+    careers[product % careers.length]
+  } `;
+
+  return [sentence1, sentence2];
 }
+
+const adjectives = [
+  'happy',
+  'sad',
+  'angry',
+  'silly',
+  'lazy',
+  'creative',
+  'funny',
+  'cute',
+  'brave',
+  'smart',
+  'influential',
+  'eccentric',
+  'generous',
+  'kind',
+  'loyal',
+  'helpful',
+  'lucky',
+  'wise',
+  'clumsy',
+  'curious',
+  'encouraging',
+  'shy',
+  'stubborn',
+  'witty',
+  'sensitive',
+  'loud',
+  'quiet',
+  'free spirited',
+  'confident',
+  'courageous',
+  'determined',
+  'fearless',
+  'fun',
+];
+
+const careers = [
+  'doctor',
+  'lawyer',
+  'teacher',
+  'nurse',
+  'programmer',
+  'writer',
+  'musician',
+  'singer',
+  'actor',
+  'comedian',
+  'dancer',
+  'pianist',
+  'engineer',
+  'chef',
+  'salesman',
+  'rapper',
+  'realtor',
+  'banker',
+  'nurse',
+  'firefighter',
+  'politician',
+];
 
 const consonants = [
   'b',
